@@ -1,31 +1,30 @@
 <br />
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/d-edge/strip-markdown-html/main/strip-html.png" alt="strip-markdown-html logo" height="140">
+    <img src="order.png" alt="strip-markdown-html logo" height="140">
 </p>
 
 <br />
 
-Strip-markdown-html is a GitHub action to strip HTML tags from a Markdown file.
+Order-by-json is a GitHub action to order object by property in a json file
 
 ## Example usage
 
 ```yaml
-- name: Strip HTML from README
-  uses: d-edge/strip-markdown-html@v0.2
+- name: Order objects by a given property from a json file 
+  uses: aloisdg/order-by-json@v0.3
   with:
-    input-path: README.md
-    output-path: out/README.md
+    pattern: './data/*.json'
+    property: 'Abbreviation'
 ```
 
 ## Parameters
 
-* `input-path` (mandatory): Path to the input Markdown file that contains some HTML.
+* `pattern` (mandatory): {String} Pattern to be matched (rely on [Glob](https://github.com/isaacs/node-glob))
 
-* `output-path` (optional): Path to the output Markdown file stripped of HTML.  
-    If unspecified, use `input-path`, ie modify the file in place.
+* `property` (optional): {String} Property to use to sort a list of object
 
-* `encoding` (optional): The text encoding of the file. Default: `utf8`.
+* `encoding` (optional): {String} The text encoding of the file. Default: `utf8`.
 
 ## License
 
