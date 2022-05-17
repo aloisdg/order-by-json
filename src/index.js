@@ -10,7 +10,7 @@ async function orderFile(path, encoding, property) {
   const items = JSON.parse(content);
   items.sort((a, b) => a[property].localeCompare(b[property]));
   const data = JSON.stringify(items, undefined, 2);
-  fsPromises.writeFile(path, data, encoding);
+  return fsPromises.writeFile(path, data, encoding);
 }
 
 async function orderFiles(files, encoding, property) {
