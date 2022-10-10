@@ -15,7 +15,7 @@ async function orderFile(path, encoding, property) {
 
 async function orderFiles(files, encoding, property) {
   var orderTasks = files.map((x) => orderFile(x, encoding, property));
-  await Promise.all(orderTasks);
+  await Promise.all(orderTasks).catch(core.setFailed);
 }
 
 try {
@@ -31,5 +31,5 @@ try {
     }
   });
 } catch (error) {
-  core.setFailed(error.message);
+  core.setFailed(error);
 }
